@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+  <persistence-unit name="default">
+
+      <class>entity.ArmazemEntity</class>
+      <class>entity.BarcoEntity</class>
+      <class>entity.EspecieEntity</class>
+      <class>entity.GestorEntity</class>
+      <class>entity.LocalidadeEntity</class>
+      <class>entity.NacionalidadeEntity</class>
+      <class>entity.PescadoEntity</class>
+      <class>entity.RecursoEntity</class>
+      <class>entity.RecursosHumanosEntity</class>
+      <class>entity.TamanhoEntity</class>
+      <class>entity.TipoRecursoEntity</class>
+      <class>entity.TripulanteEntity</class>
+      <class>entity.ViagemEntity</class>
+      <class>entity.TripulanteViagemEntity</class>
+      <properties>
+          <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/NavPesca"/>
+          <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+          <property name="hibernate.connection.username" value="postgres"/>
+          <property name="hibernate.connection.password" value="ggtg"/>
+      </properties>
+  </persistence-unit>
+</persistence>
