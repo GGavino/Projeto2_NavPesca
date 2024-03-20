@@ -24,6 +24,11 @@ public class NacionalidadeBLL {
         transaction.commit();
     }
 
+    public static void update(){
+        transaction.begin();
+        transaction.commit();
+    }
+
     public static NacionalidadeEntity findNacionalidade(long id){
         return em.find(NacionalidadeEntity.class, id);
     }

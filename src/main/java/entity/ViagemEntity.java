@@ -3,6 +3,8 @@ package entity;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "\"Viagem\"", schema = "public", catalog = "NavPesca")
@@ -20,6 +22,31 @@ public class ViagemEntity {
     @Basic
     @Column(name = "duracao", nullable = false)
     private int duracao;
+
+    @OneToMany(mappedBy = "idViagem")
+    private Set<PescadoEntity> pescados = new LinkedHashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "TripulanteViagem",
+            joinColumns = @JoinColumn(name = "id_viagem"),
+            inverseJoinColumns = @JoinColumn(name = "num_tripulante"))
+    private Set<TripulanteEntity> tripulantes = new LinkedHashSet<>();
+
+    public Set<TripulanteEntity> getTripulantes() {
+        return tripulantes;
+    }
+
+    public void setTripulantes(Set<TripulanteEntity> tripulantes) {
+        this.tripulantes = tripulantes;
+    }
+
+    public Set<PescadoEntity> getPescados() {
+        return pescados;
+    }
+
+    public void setPescados(Set<PescadoEntity> pescados) {
+        this.pescados = pescados;
+    }
 
     public int getIdViagem() {
         return idViagem;

@@ -15,6 +15,32 @@ public class TripulanteViagemEntity {
     @Column(name = "num_tripulante", nullable = false)
     private int numTripulante;
 
+    @MapsId
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_viagem", nullable = false)
+    private ViagemEntity idViagem1;
+
+    @MapsId
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "num_tripulante", nullable = false)
+    private TripulanteEntity numTripulante1;
+
+    public TripulanteEntity getNumTripulante1() {
+        return numTripulante1;
+    }
+
+    public void setNumTripulante1(TripulanteEntity numTripulante1) {
+        this.numTripulante1 = numTripulante1;
+    }
+
+    public ViagemEntity getIdViagem1() {
+        return idViagem1;
+    }
+
+    public void setIdViagem1(ViagemEntity idViagem1) {
+        this.idViagem1 = idViagem1;
+    }
+
     public int getIdViagem() {
         return idViagem;
     }

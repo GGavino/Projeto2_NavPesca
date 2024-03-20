@@ -2,6 +2,9 @@ package entity;
 
 import jakarta.persistence.*;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "\"Localidade\"", schema = "public", catalog = "NavPesca")
 public class LocalidadeEntity {
@@ -12,6 +15,50 @@ public class LocalidadeEntity {
     @Basic
     @Column(name = "localidade", nullable = false, length = 75)
     private String localidade;
+
+    @OneToMany(mappedBy = "codpostal")
+    private Set<ArmazemEntity> armazems = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "codpostal")
+    private Set<GestorEntity> gestors = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "codpostal")
+    private Set<RecursosHumanosEntity> recursosHumanos = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "codpostal")
+    private Set<TripulanteEntity> tripulantes = new LinkedHashSet<>();
+
+    public Set<TripulanteEntity> getTripulantes() {
+        return tripulantes;
+    }
+
+    public void setTripulantes(Set<TripulanteEntity> tripulantes) {
+        this.tripulantes = tripulantes;
+    }
+
+    public Set<RecursosHumanosEntity> getRecursosHumanos() {
+        return recursosHumanos;
+    }
+
+    public void setRecursosHumanos(Set<RecursosHumanosEntity> recursosHumanos) {
+        this.recursosHumanos = recursosHumanos;
+    }
+
+    public Set<GestorEntity> getGestors() {
+        return gestors;
+    }
+
+    public void setGestors(Set<GestorEntity> gestors) {
+        this.gestors = gestors;
+    }
+
+    public Set<ArmazemEntity> getArmazems() {
+        return armazems;
+    }
+
+    public void setArmazems(Set<ArmazemEntity> armazems) {
+        this.armazems = armazems;
+    }
 
     public String getCodpostal() {
         return codpostal;

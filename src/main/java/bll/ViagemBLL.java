@@ -1,6 +1,6 @@
 package bll;
 
-import entity.TripulanteEntity;
+import entity.ViagemEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -9,33 +9,34 @@ import jakarta.persistence.Persistence;
 import java.util.List;
 
 
-public class TripulanteBLL {
+public class ViagemBLL {
+
     private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
     private static EntityManager em = factory.createEntityManager();
     private static EntityTransaction transaction = em.getTransaction();
 
-    public static void criar(TripulanteEntity tri){
+    public static void criar(ViagemEntity viagem){
         transaction.begin();
-        em.persist(tri);
+        em.persist(viagem);
         transaction.commit();
     }
 
-    public static void apagar(TripulanteEntity tri){
+    public static void apagar(ViagemEntity viagem){
         transaction.begin();
-        em.remove(tri);
+        em.remove(viagem);
         transaction.commit();
     }
-
     public static void update(){
         transaction.begin();
         transaction.commit();
     }
 
-    public static TripulanteEntity findTripulante(long id){
-        return em.find(TripulanteEntity.class, id);
+    public static ViagemEntity findViagem(long id){
+        return em.find(ViagemEntity.class, id);
     }
 
-    public static List<TripulanteEntity> listar(){
-        return em.createQuery("from TripulanteEntity").getResultList();
+    public static List<ViagemEntity> listar(){
+        return em.createQuery("from ViagemEntity ").getResultList();
     }
+
 }

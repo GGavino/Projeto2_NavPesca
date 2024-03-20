@@ -1,6 +1,6 @@
 package bll;
 
-import entity.TripulanteEntity;
+import entity.PescadoEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -9,20 +9,20 @@ import jakarta.persistence.Persistence;
 import java.util.List;
 
 
-public class TripulanteBLL {
+public class PescadoBLL {
     private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
     private static EntityManager em = factory.createEntityManager();
     private static EntityTransaction transaction = em.getTransaction();
 
-    public static void criar(TripulanteEntity tri){
+    public static void criar(PescadoEntity pescado){
         transaction.begin();
-        em.persist(tri);
+        em.persist(pescado);
         transaction.commit();
     }
 
-    public static void apagar(TripulanteEntity tri){
+    public static void apagar(PescadoEntity pescado){
         transaction.begin();
-        em.remove(tri);
+        em.remove(pescado);
         transaction.commit();
     }
 
@@ -31,11 +31,12 @@ public class TripulanteBLL {
         transaction.commit();
     }
 
-    public static TripulanteEntity findTripulante(long id){
-        return em.find(TripulanteEntity.class, id);
+    public static PescadoEntity findPescado(long id){ return em.find(PescadoEntity.class, id); }
+
+    public static List<PescadoEntity> listar(){
+        return em.createQuery("from PescadoEntity ").getResultList();
     }
 
-    public static List<TripulanteEntity> listar(){
-        return em.createQuery("from TripulanteEntity").getResultList();
-    }
 }
+
+

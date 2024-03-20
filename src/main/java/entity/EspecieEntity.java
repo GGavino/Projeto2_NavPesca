@@ -2,6 +2,9 @@ package entity;
 
 import jakarta.persistence.*;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "\"Especie\"", schema = "public", catalog = "NavPesca")
 public class EspecieEntity {
@@ -12,6 +15,17 @@ public class EspecieEntity {
     @Basic
     @Column(name = "especie", nullable = false, length = 50)
     private String especie;
+
+    @OneToMany(mappedBy = "especie")
+    private Set<PescadoEntity> pescados = new LinkedHashSet<>();
+
+    public Set<PescadoEntity> getPescados() {
+        return pescados;
+    }
+
+    public void setPescados(Set<PescadoEntity> pescados) {
+        this.pescados = pescados;
+    }
 
     public int getIdEspecie() {
         return idEspecie;

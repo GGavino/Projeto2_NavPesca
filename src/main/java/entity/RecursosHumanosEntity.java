@@ -30,6 +30,18 @@ public class RecursosHumanosEntity {
     @Column(name = "id_nacionalidade", nullable = false)
     private int idNacionalidade;
 
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "login", nullable = false)
+    private Login login;
+
+    public Login getLogin() {
+        return login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }
+
     public int getNumFuncionario() {
         return numFuncionario;
     }

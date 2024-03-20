@@ -1,6 +1,6 @@
 package bll;
 
-import entity.TripulanteEntity;
+import entity.RecursosHumanosEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -9,20 +9,20 @@ import jakarta.persistence.Persistence;
 import java.util.List;
 
 
-public class TripulanteBLL {
+public class RecursosHumanosBLL {
     private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
     private static EntityManager em = factory.createEntityManager();
     private static EntityTransaction transaction = em.getTransaction();
 
-    public static void criar(TripulanteEntity tri){
+    public static void criar(RecursosHumanosEntity rh){
         transaction.begin();
-        em.persist(tri);
+        em.persist(rh);
         transaction.commit();
     }
 
-    public static void apagar(TripulanteEntity tri){
+    public static void apagar(RecursosHumanosEntity rh){
         transaction.begin();
-        em.remove(tri);
+        em.remove(rh);
         transaction.commit();
     }
 
@@ -31,11 +31,10 @@ public class TripulanteBLL {
         transaction.commit();
     }
 
-    public static TripulanteEntity findTripulante(long id){
-        return em.find(TripulanteEntity.class, id);
+    public static RecursosHumanosEntity findRH(long id){ return em.find(RecursosHumanosEntity.class, id); }
+
+    public static List<RecursosHumanosEntity> listar(){
+        return em.createQuery("from RecursosHumanosEntity ").getResultList();
     }
 
-    public static List<TripulanteEntity> listar(){
-        return em.createQuery("from TripulanteEntity").getResultList();
-    }
 }
